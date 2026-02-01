@@ -1,0 +1,25 @@
+<section class="panel">
+    <h2 class="panel__title">Secciones</h2>
+
+    <ul class="list" id="miLista">
+        @for (c of contenido.temas(); track c.titulo) {
+            <li 
+                class="list__item"
+                [class.is-selected]="contenido.selectedTitulo() === c.titulo"
+                [style.background-color]="c.color"
+                (click)="contenido.selectTema(c.titulo)"
+            >
+
+                <div class="list__row">
+
+                    <div class="list__info">
+                        <div class="list__name"><b>{{ c.titulo }}</b></div>
+                        <div class="list__meta">
+                            {{ c.descripcion }} 
+                        </div>
+                    </div>
+                </div>
+            </li>
+        }
+    </ul>
+</section>

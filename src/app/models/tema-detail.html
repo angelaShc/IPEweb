@@ -1,0 +1,37 @@
+<section [style.background-color]="contenido.selected?.color" class="panel">
+
+    @if (contenido.selected) {
+        <div class="form">
+                <label class="field">
+                    <span class="field__title">{{ contenido.selected?.titulo }}</span>
+                </label>
+                <label class="field">
+                    <span class="field__label">Descripción</span>
+                    <p class="field__text-static material-paragraph">{{ contenido.selected?.descripcion }}</p>
+                </label>
+                <label class="field">
+                    <span class="field__label">Contenido</span>
+                    <div class="field__content">
+                        @for (parrafo of contenido.selected?.material; track parrafo) {
+                            <p class="material-text">{{ parrafo }}</p>
+                        }
+                    </div>
+                </label>
+
+                @if (contenido.selected?.url) {
+                    <div class="field">
+                        <span class="field__label">Archivo disponible</span>
+                                    
+                        <div class="seccion__download">
+                            <a [href]="contenido.selected?.url" download class="link-download">
+                                {{ contenido.selected?.url?.split('/')?.pop() }}
+                            </a>
+                        </div>
+                    </div>
+                }
+
+        </div>
+
+    }
+
+</section>
